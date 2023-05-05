@@ -5,35 +5,42 @@ computer_wins = 0
 options = ["pierre", "feuille", "ciseaux"]
 
 while True:
-    user_input = input("Ecrit Pierre, Feuille ou Ciseaux ou Q pour quitter la partie ! ").lower()
+    user_input = input("\nEcrit Pierre, Feuille ou Ciseaux ou Q pour quitter la partie ! ").lower()
     if user_input == "q":
         break
     if user_input not in options:
         continue
     random_number = random.randint(0, 2)
     computer_option = options[random_number]
-    print("\nL'ordinateur avait choisi :", computer_option + ".")
+    print("\n-- L'ordinateur avait choisi :", computer_option + ".")
 
     if user_input == "pierre" and computer_option == "ciseaux":
-        print("Bravo !")
         user_wins += 1
+        print("-- Bravo !")
     elif user_input == "feuille" and computer_option == "pierre":
-        print("Bravo !")
         user_wins += 1
+        print("-- Bravo !")
     elif user_input == "ciseaux" and computer_option == "feuille":
-        print("Bravo !")
         user_wins += 1
+        print("-- Bravo !")
     elif user_input == computer_option:
-        print("Match nul !")
+        print("-- Match nul !")
     else:
-        print("C'est perdu !")
         computer_wins += 1
+        print("-- C'est perdu !")
+    print(f"-- Ton score : {user_wins} || Ordinateur : {computer_wins}")
 
-if user_wins > 0 and computer_wins > 0:
-    print("\nTu as gagné", user_wins, "fois et l'ordinateur a gagné", computer_wins, "fois.")
+if user_wins == computer_wins and user_wins != 0:
+    print(f"\nTu as fait {user_wins} points et l'ordinateur {computer_wins} points.")
+    print("Vous êtes ex æquo !! Bravo !")
+elif user_wins == 0 and computer_wins == 0:
+    print(f"\nTu as fait {user_wins} points et l'ordinateur {computer_wins} points.")
+    print("Dommage !!")
+elif user_wins > 0 or computer_wins > 0:
+    print(f"\nTu as fait {user_wins} points et l'ordinateur {computer_wins} points.")
     if user_wins > computer_wins:
         print("Bien joué ! :)")
     else:
         print("Encore une preuve que les ordinateurs dirigeront le monde..")
 
-print("\nAdios !")
+print("Merci d'avoir joué avec mon ordinateur !")
